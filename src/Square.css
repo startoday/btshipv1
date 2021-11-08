@@ -1,1 +1,12 @@
-import './Square.css';
+.container {
+	display: grid;
+	grid-template-columns: repeat(10, 20px);
+	grid-template-rows: repeat(10, 20px);
+}
+
+.square {
+	border: 1px solid grey;
+	width: 20px;
+	height: 20px;
+	background-color: white;
+}

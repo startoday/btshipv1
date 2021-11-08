@@ -1,9 +1,5 @@
-import React from 'react'
 import './Square.css';
-export default function Square() {
-    return (
-        <div>
-            
-        </div>
-    )
+
+export default function Square(props) {
+	return (<div class="square"  > {props.num} </div>);
 }

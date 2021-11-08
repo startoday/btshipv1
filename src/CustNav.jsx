@@ -1,9 +1,14 @@
 import React from 'react'
+import { homedir } from 'os';
+import { useNavigate } from 'react-router-dom';
 
 export default function CustNav() {
+    const navigate = useNavigate();
     return (
+        <>
         <div>
-            This is a NavBar
+        <button onClick={() => navigate('/')}>homeNavbar</button>
         </div>
+        </>
     )
 }

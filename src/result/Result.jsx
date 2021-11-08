@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 export default function Result() {
-    return (
-        <div>
-            WINNER IS
-        </div>
-    )
+	const queryString = window.location.search;
+	console.log(queryString);
+	const urlParams = new URLSearchParams(queryString);
+	const winner = urlParams.get('winner');
+	return <div>Winner is {winner}</div>;
 }
