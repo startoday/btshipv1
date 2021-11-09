@@ -90,14 +90,14 @@ const gameState = (game = defaultGameState, action) => {
 			game.userBoats.delete(action.i*10 + action.j);
 			game.board1[action.i][action.j] = game.board1[action.i][action.j]-1;
 			if(game.userBoats.size === 0){
-				alert("user wins");
+				alert("Game End!");
 				window.location.href = "/result?winner=user";
 			}
 			const { i, j } = computerMove(game.board2);
 			game.computerBoats.delete(i*10 + j);
 			game.board2[i][j] = game.board2[i][j]-1;
 			if(game.computerBoats.size === 0){
-				alert("computer wins");
+				alert("Game End!");
 				window.location.href = "/result?winner=pc";
 			}
 			return { ...game };

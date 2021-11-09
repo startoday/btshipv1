@@ -8,5 +8,14 @@
 	border: 1px solid grey;
 	width: 20px;
 	height: 20px;
-	background-color: white;
+    background-color: lightblue;
+}
+#miss{
+    background-color: salmon;
+}
+#hit{
+    background-color: lightgreen;
+}
+.square:hover {
+    background-color: yellow;
 }

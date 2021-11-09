@@ -39,10 +39,13 @@ export default function Play(props) {
 		<div>
 			{/* <h3> reset </h3> */}
 			<h3 onClick={() => dispatch(fire('user', getRandomInt(10), getRandomInt(10)))}> randomfire </h3>
-			<div class="container">{boardComp}</div>
+			<div>PC's board:</div>
+            <div class="container">{boardComp}</div>
 		
             <br/>
-            <div class="container">{mode ==="user"? boardComp2 :""}</div> 
+            {mode ==="user"?  <div>Your board:</div> :""}
+            {mode ==="user"?  <div>Your percent boat Left: {(gameState.computerBoats.size*100/17).toFixed(2)} %</div> :""}
+            <div class="container">{mode ==="user"?  boardComp2 :""}</div> 
 		</div>
 	);
 }

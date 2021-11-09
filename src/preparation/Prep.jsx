@@ -6,10 +6,11 @@ export default function Prepare() {
 	
 	return (
 		<>
+        <div>currently only start game-randomGen is implmented </div>
 		<button  onClick={() => navigate('/play?mode=user')}>Start Game</button>
 		<button >Rotate Your Ships</button>
-		<button >Random Place</button>
-	
+		<button >Random Placement</button>
+
 		</>
 	);
 }
