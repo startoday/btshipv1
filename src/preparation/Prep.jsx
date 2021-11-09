@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Board from '../Board';
 import Ship from '../Ship';
+import './Prep.css';
 export default function Prep() {
     const navigate = useNavigate();
     
@@ -10,7 +11,7 @@ export default function Prep() {
         <div>currently only start game-randomGen is implemented </div>
         <Board/>
         <br/>
-        <Ship len = "3"  draggable="true"/>
+        <Ship len = "3"/>
         <br/>
 		<button  onClick={() => navigate('/play?mode=user')}>Start Game</button>
 		<button >Rotate Your Ships</button>

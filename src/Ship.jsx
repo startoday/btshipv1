@@ -7,12 +7,12 @@ export default function Ship(prop) {
     for (let i = 0; i < len; i++) {
         arr.push(
 				<div >
-					<Square id= "shipColor"/> 
+					<Square num = {3}/> 
 				</div>
 			);
 	}
     return (
-        <div>
+        <div draggable="true" >
             {arr}
         </div>
     )
