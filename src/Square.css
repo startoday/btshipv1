@@ -10,6 +10,7 @@
 	height: 20px;
     background-color: lightblue;
 }
+
 #miss{
     background-color: salmon;
 }
@@ -25,4 +26,8 @@
 }
 #hit:hover{
     background-color: grey;
+}
+
+#shipColor {
+    background-color: darkgreen;
 }

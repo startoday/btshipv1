@@ -3,9 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import{localStorageKey} from './helpers/constants'
 function App() {
   const navigate = useNavigate();
-  
   const value  = localStorage.getItem(localStorageKey);
-  console.log("v is ", value);
   return (
 		<>
 				<div>Welcome to BattleShip!</div>
