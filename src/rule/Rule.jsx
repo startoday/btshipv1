@@ -3,7 +3,7 @@ import React from 'react'
 export default function Rule() {
     return (
         <div>
-            GAME RULE EXP
+            This is a page for game rule explanation
         </div>
     )
 }

@@ -1,5 +1,4 @@
 import React from 'react'
-import { homedir } from 'os';
 import { useNavigate } from 'react-router-dom';
 
 export default function CustNav() {

@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { render } from 'react-dom';
 import allReducers from './reducers';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import Prep from './preparation/Prep';
 import Play from './play/Play';
 import Rule from './rule/Rule';

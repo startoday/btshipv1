@@ -19,7 +19,6 @@ function isOutOfboundary(start, spot, dir, rowLength) {
 	} else {
 		return start % rowLength !== spot % rowLength;
 	}
-	return false 
 }
 // dir is 1 as horizental and 10 as vertical
 function generateBoat(size, dir, takenPlace, rowLength) {

@@ -1,11 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Prep from './preparation/Prep';
-import Play from './play/Play';
 import { useNavigate } from 'react-router-dom';
-
+import{localStorageKey} from './helpers/constants'
 function App() {
   const navigate = useNavigate();
+  
+  const value  = localStorage.getItem(localStorageKey);
+  console.log("v is ", value);
   return (
 		<>
 				<div>Welcome to BattleShip!</div>

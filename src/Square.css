@@ -16,6 +16,13 @@
 #hit{
     background-color: lightgreen;
 }
-.square:hover {
+.square:hover  {
     background-color: yellow;
+}
+
+#miss:hover{
+    background-color: grey;
+}
+#hit:hover{
+    background-color: grey;
 }
