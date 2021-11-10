@@ -1,0 +1,18 @@
+.playPageContainer{
+    display:flex;
+    /* display: grid;
+    grid-auto-columns: 300px 300px;
+    grid-auto-rows: 300px 300px; */
+}
+.boardContainer{
+    margin: 10px 10px;
+    width:250px;
+    height:250px;
+    border: 2px dotted purple;
+}
+
+.statusDisplay{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(2,1fr);
+}

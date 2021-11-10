@@ -1,5 +1,13 @@
-.ship{
-    background-color:  darkgreen;
+.prepareBoard{
+    margin: 15px 15px;
+    display: grid;
+    grid-template-columns: repeat(2, 250px);
+    grid-template-rows: repeat(10, 20px);
+}
+.shipBoard{
+    display: grid;
+	grid-template-columns: repeat(2, 30px);
+	grid-template-rows: repeat(5, 20px);
 }
 #shipColor {
     background-color: darkgreen;

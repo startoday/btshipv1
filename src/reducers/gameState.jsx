@@ -82,6 +82,8 @@ function computerMove(board) {
 const gameState = (game = defaultGameState, action) => {
 	switch (action.type) {
 		case 'fire':
+			// TODO, if it is random frie, we may choose not to fire the same place,
+			// aka only don't return until it is a valid move
 			if (!validateFire(game.board1, action.i, action.j)) {
 				alert("You can't refire a place already been fired, please choose a different place");
 				return game;
@@ -92,12 +94,16 @@ const gameState = (game = defaultGameState, action) => {
 				alert("Game End!");
 				window.location.href = "/result?winner=user";
 			}
-			const { i, j } = computerMove(game.board2);
-			game.computerBoats.delete(i*10 + j);
-			game.board2[i][j] = game.board2[i][j]-1;
-			if(game.computerBoats.size === 0){
-				alert("Game End!");
-				window.location.href = "/result?winner=pc";
+			if(action.player === "user"){
+				// TODO: improve computer move with better choice,
+				// such as when a hit comes, only hit around!
+				const { i, j } = computerMove(game.board2);
+				game.computerBoats.delete(i*10 + j);
+				game.board2[i][j] = game.board2[i][j]-1;
+				if(game.computerBoats.size === 0){
+					alert("Game End!");
+					window.location.href = "/result?winner=pc";
+				}
 			}
 			return { ...game };
 		default:

@@ -9,11 +9,15 @@ export default function Prep() {
 	return (
 		<>
         <div>currently only start game-randomGen is implemented </div>
-        <Board/>
+        <div class = "prepareBoard">
+            <Board/>
+            <div class = "shipBoard">
+                <Ship len = "3"/>
+                <Ship len = "4"/>
+            </div>
+        </div>
         <br/>
-        <Ship len = "3"/>
-        <br/>
-		<button  onClick={() => navigate('/play?mode=user')}>Start Game</button>
+		<button  onClick={() => {navigate('/play?mode=user')}}>Start Game</button>
 		<button >Rotate Your Ships</button>
 		<button onClick={() => navigate('/play?mode=user')} >Random Placement</button>
 		</>
