@@ -14,7 +14,7 @@ export default function UserBoard(props) {
 		for (let j = 0; j < row.length; j++) {
 			boardComp.push(
 				<div onClick={() => dispatch(fire(mode, i, j))}>
-					<Square num={boardState[i][j]}> </Square>
+					<Square num={boardState[i][j]} mode ="user"> </Square>
 				</div>
 			);
 		}
