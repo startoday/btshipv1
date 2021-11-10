@@ -48,16 +48,6 @@ function generateBoats() {
 function generateDefaultGameSate(rowLength, userBoats= generateBoats()) {
 	const board1 = generateBoard(rowLength);
 	const board2 = generateBoard(rowLength);
-	// let userBoats; 
-	// if(taken !== undefined){
-	// 	userBoats = new Set();
-	// 	taken["takenPlace"].forEach((v) => {
-	// 		userBoats.add(v);
-	// 	});
-	// } else {
-	// 	userBoats= generateBoats();
-	// }
-	// console.log(userBoats);
 	userBoats.forEach((v) => {
 		board1[Math.floor(v / rowLength)][v % rowLength] = 2;
 	});
