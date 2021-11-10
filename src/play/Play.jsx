@@ -1,5 +1,5 @@
 import React from 'react';
-import { fire } from '../actions';
+import { fire, resetBoard } from '../actions';
 import Square from '../Square';
 import Board from '../Board';
 import UserBoard from '../UserBoard';
@@ -16,7 +16,8 @@ export default function Play(props) {
 	const gameState = useSelector((state) => state.gameState);
 	return (
 		<div>
-			<h3> reset </h3>
+
+			<button onClick={() => dispatch(resetBoard())}> randomfire </button>
 			<div class="playPageContainer">
 				<div class="boardContainer">
 					<div class>Component's board:</div>
