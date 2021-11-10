@@ -16,7 +16,6 @@ export default function Prep() {
 	return (
 		<>
         <button onClick={() => dispatch(resetBoard())}> reset </button>
-        <div>currently only start game-randomGen is implemented </div>
         <div class = "prepareBoard">
             <Board/>
             <div class = "shipBoard">
@@ -32,7 +31,7 @@ export default function Prep() {
             if (valid){
                 dispatch(setBoard({takenPlace}));
             } else{
-                alert("your placement is invalid");
+                alert("your placement is invalid! going to random placement for now");
             }
             navigate('/play?mode=user')}}>Start Game</button>
 		<button >Rotate Your Ships</button>
