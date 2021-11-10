@@ -1,7 +1,7 @@
 import { getRandomInt } from '../helpers/helperFunction';
 
 const rowLength = 10;
-const ships = [2,3,3,4,5];
+const ships = [ 2, 3, 3, 4, 5 ];
 
 function generateBoard(rows) {
 	let arr = [];
@@ -11,7 +11,7 @@ function generateBoard(rows) {
 	return arr;
 }
 function isOutOfboundary(start, spot, dir, rowLength) {
-	if(spot >= 100){
+	if (spot >= 100) {
 		return true;
 	}
 	if (dir === 1) {
@@ -27,7 +27,7 @@ function generateBoat(size, dir, takenPlace, rowLength) {
 	for (let i = 0; i < size; i++) {
 		let spot = start + i * dir;
 		if (takenPlace.has(spot) || isOutOfboundary(start, spot, dir, 10)) {
-            return generateBoat(size, dir, takenPlace, rowLength);
+			return generateBoat(size, dir, takenPlace, rowLength);
 		}
 		arr.push(spot);
 	}
@@ -36,19 +36,28 @@ function generateBoat(size, dir, takenPlace, rowLength) {
 function generateBoats() {
 	const takenPlace = new Set();
 	let dir;
-    ships.forEach((shipSize) =>{
-        dir = 1 + getRandomInt(2) * 9;
-        const boat= generateBoat(shipSize, dir, takenPlace);
-        boat.forEach((b) => takenPlace.add(b));
-    })
-    
+	ships.forEach((shipSize) => {
+		dir = 1 + getRandomInt(2) * 9;
+		const boat = generateBoat(shipSize, dir, takenPlace);
+		boat.forEach((b) => takenPlace.add(b));
+	});
+
 	return takenPlace;
 }
 
-function generateDefaultGameSate(rowLength) {
+function generateDefaultGameSate(rowLength, userBoats= generateBoats()) {
 	const board1 = generateBoard(rowLength);
 	const board2 = generateBoard(rowLength);
-	const userBoats = generateBoats();
+	// let userBoats; 
+	// if(taken !== undefined){
+	// 	userBoats = new Set();
+	// 	taken["takenPlace"].forEach((v) => {
+	// 		userBoats.add(v);
+	// 	});
+	// } else {
+	// 	userBoats= generateBoats();
+	// }
+	// console.log(userBoats);
 	userBoats.forEach((v) => {
 		board1[Math.floor(v / rowLength)][v % rowLength] = 2;
 	});
@@ -66,7 +75,7 @@ function generateDefaultGameSate(rowLength) {
 const defaultGameState = generateDefaultGameSate(rowLength);
 
 function validateFire(board, i, j) {
-	return board[i][j] === 0 || board[i][j] === 2 ;
+	return board[i][j] === 0 || board[i][j] === 2;
 }
 
 function computerMove(board) {
@@ -88,29 +97,28 @@ const gameState = (game = defaultGameState, action) => {
 				alert("You can't refire a place already been fired, please choose a different place");
 				return game;
 			}
-			game.userBoats.delete(action.i*10 + action.j);
-			game.board1[action.i][action.j] = game.board1[action.i][action.j]-1;
-			if(game.userBoats.size === 0){
-				alert("Game End!");
-				window.location.href = "/result?winner=user";
+			game.userBoats.delete(action.i * 10 + action.j);
+			game.board1[action.i][action.j] = game.board1[action.i][action.j] - 1;
+			if (game.userBoats.size === 0) {
+				alert('Game End!');
+				window.location.href = '/result?winner=user';
 			}
-			if(action.player === "user"){
+			if (action.player === 'user') {
 				// TODO: improve computer move with better choice,
 				// such as when a hit comes, only hit around!
 				const { i, j } = computerMove(game.board2);
-				game.computerBoats.delete(i*10 + j);
-				game.board2[i][j] = game.board2[i][j]-1;
-				if(game.computerBoats.size === 0){
-					alert("Game End!");
-					window.location.href = "/result?winner=pc";
+				game.computerBoats.delete(i * 10 + j);
+				game.board2[i][j] = game.board2[i][j] - 1;
+				if (game.computerBoats.size === 0) {
+					alert('Game End!');
+					window.location.href = '/result?winner=pc';
 				}
 			}
 			return { ...game };
 		case 'resetBoard':
-			
 			return generateDefaultGameSate(rowLength);
-			
-
+		case 'setBoard':
+				return generateDefaultGameSate(rowLength, action.taken["takenPlace"]);
 		default:
 			return game;
 	}

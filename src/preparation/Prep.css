@@ -5,8 +5,9 @@
     grid-template-rows: repeat(10, 20px);
 }
 .shipBoard{
+    margin: 15px 15px;
     display: grid;
-	grid-template-columns: repeat(2, 30px);
+	grid-template-columns: repeat(5, 30px);
 	grid-template-rows: repeat(5, 20px);
 }
 #shipColor {
