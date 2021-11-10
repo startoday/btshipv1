@@ -106,6 +106,11 @@ const gameState = (game = defaultGameState, action) => {
 				}
 			}
 			return { ...game };
+		case 'resetBoard':
+			
+			return generateDefaultGameSate(rowLength);
+			
+
 		default:
 			return game;
 	}
