@@ -1,15 +1,44 @@
+/*
 .prepareBoard{
     margin: 15px 15px;
     display: grid;
     grid-template-columns: repeat(2, 250px);
     grid-template-rows: repeat(10, 20px);
 }
+*/
 .shipBoard{
     margin: 15px 15px;
     display: grid;
 	grid-template-columns: repeat(5, 30px);
 	grid-template-rows: repeat(5, 20px);
 }
+
 #shipColor {
     background-color: darkgreen;
 }
+
+.prepareBoard {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 30px;
+    text-align: center;
+  }
+  
+  .boardContainer-left {
+    background-color: #f1f1f1;
+    padding: 10px;
+    flex: 50%;
+  }
+  
+  .boardContainer-right {
+    background-color: #d0e8eb;
+    padding: 10px;
+    flex: 50%;
+  }
+  
+  /* Responsive layout - makes a one column-layout instead of a two-column layout */
+  @media (max-width: 800px) {
+    .boardContainer-left, .boardContainer-right {
+      flex: 100%;
+    }
+  }

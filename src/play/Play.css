@@ -1,15 +1,69 @@
+/*
 .playPageContainer{
     display:flex;
-    /* display: grid;
-    grid-auto-columns: 300px 300px;
-    grid-auto-rows: 300px 300px; */
+    flex-direction: row;
+
 }
 .boardContainer{
+    align-items: center;
+    justify-content: center;
     margin: 10px 10px;
-    width:250px;
+    width:300px;
+    height:250px;
+    padding: 10px;
+    flex: 50%;
+}
+.boardContainer-left{
+    align-items: center;
+    justify-content: center;
+    margin: 10px 10px;
+    width:300px;
+    height:250px;
+    padding: 10px;
+  flex: 50%;
+}
+.boardContainer-right{
+    align-items: center;
+    justify-content: center;
+    margin: 10px 10px;
+    width:300px;
     height:250px;
 }
 
+@media (max-width: 800px) {
+    .flex-container {
+      flex-direction: column;
+    }
+  }
+
+
+*/
+
+.playPageContainer {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 30px;
+    text-align: center;
+  }
+  
+  .boardContainer-left {
+    background-color: #f1f1f1;
+    padding: 10px;
+    flex: 50%;
+  }
+  
+  .boardContainer-right {
+    background-color: #d0e8eb;
+    padding: 10px;
+    flex: 50%;
+  }
+  
+  /* Responsive layout - makes a one column-layout instead of a two-column layout */
+  @media (max-width: 800px) {
+    .boardContainer-left, .boardContainer-right {
+      flex: 100%;
+    }
+  }
 .statusDisplay{
     display: grid;
     grid-template-columns: 1fr 4fr;

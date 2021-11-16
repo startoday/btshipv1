@@ -7,6 +7,8 @@ import ComputerBoard from '../ComputerBoard';
 import { useSelector, useDispatch } from 'react-redux';
 import { getRandomInt } from '../helpers/helperFunction';
 import "./Play.css"
+import { Button, Nav, Container, Card, Row, Col, Image } from 'react-bootstrap';
+
 
 export default function Play(props) {
 	const queryString = window.location.search;
@@ -16,21 +18,23 @@ export default function Play(props) {
 	const gameState = useSelector((state) => state.gameState);
 	return (
 		<div>
-
-			<button onClick={() => dispatch(resetBoard())}> Reset </button>
 			<div class="playPageContainer">
-				<div class="boardContainer">
+				<div class="boardContainer-left">
 					<div class>Component's board:</div>
 						<UserBoard mode={mode} />
 				</div>
 
-				<div class="boardContainer">
+				<div class="boardContainer-right">
 					{mode === 'user' ? <div>Your board:</div> : ''}
-					{mode === 'user' ? <ComputerBoard /> : ''}
+					{mode === 'user' ? <ComputerBoard />: ''}
 				</div>
 			</div>
+			
+			{' '}
+			<Button variant="outline-secondary" onClick={() => dispatch(fire(mode, getRandomInt(10), getRandomInt(10)))}> Random Fire </Button>{' '}
+			<Button variant="outline-secondary" onClick={() => dispatch(resetBoard())}> Reset </Button>
 			<div class="statusDisplay">
-				<button onClick={() => dispatch(fire(mode, getRandomInt(10), getRandomInt(10)))}> randomfire </button>
+				
 				{mode === 'user' ? (
 					<div>Your percent boat Left: {(gameState.computerBoats.size * 100 / 17).toFixed(2)} %</div>
 				) : (

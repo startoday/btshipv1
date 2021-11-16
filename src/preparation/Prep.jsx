@@ -5,6 +5,8 @@ import Ship from '../Ship';
 import {setBoard, resetBoard } from '../actions';
 import { useSelector, useDispatch } from 'react-redux';
 import './Prep.css';
+import { Button, Nav, Container, Card, Row, Col, Image } from 'react-bootstrap';
+
 export default function Prep() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -17,26 +19,30 @@ export default function Prep() {
 		<>
         
         <div class = "prepareBoard">
-            <Board/>
-            <div class = "shipBoard">
+            <div class = "boardContainer-left">Place ships on your board:<Board/></div>
+            
+            
+            <div class = "boardContainer-right">Your boats
+            <div class = "shipBoard"> 
                 <Ship len = "2"/>
                 <Ship len = "3"/>
                 <Ship len = "3"/>
                 <Ship len = "4"/>
                 <Ship len = "5"/>
             </div>
+            </div>
         </div>
         <br/>
-		<button  onClick={() => {
+		<Button variant="outline-secondary" onClick={() => {
             if (valid){
                 dispatch(setBoard({takenPlace}));
             } else{
                 alert("your placement is invalid! going to random placement for now");
             }
-            navigate('/play?mode=user')}}>Start Game</button>
-		<button >Rotate Your Ships</button>
-		<button onClick={() => navigate('/play?mode=user')} >Random Placement</button>
-		<button onClick={() => dispatch(resetBoard())}> reset </button>
+            navigate('/play?mode=user')}}>Start Game</Button>
+		<Button variant="outline-secondary" >Rotate Your Ships</Button>
+		<Button variant="outline-secondary" onClick={() => navigate('/play?mode=user')} >Random Placement</Button>
+		<Button variant="outline-secondary" onClick={() => dispatch(resetBoard())}> reset </Button>
         </>
 	);
 }
