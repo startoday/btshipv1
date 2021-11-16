@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { localStorageKey } from './helpers/constants'
+import Navigation from './Navigation';
+
 function App() {
   const navigate = useNavigate();
   const value = localStorage.getItem(localStorageKey);

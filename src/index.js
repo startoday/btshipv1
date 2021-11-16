@@ -12,6 +12,7 @@ import Rule from './rule/Rule';
 import App from './App';
 import CustNav from './CustNav';
 import Result from './result/Result';
+
 const store = createStore(allReducers);
 ReactDOM.render(
 
