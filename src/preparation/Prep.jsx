@@ -15,7 +15,7 @@ export default function Prep() {
 
 	return (
 		<>
-        <button onClick={() => dispatch(resetBoard())}> reset </button>
+        
         <div class = "prepareBoard">
             <Board/>
             <div class = "shipBoard">
@@ -36,6 +36,7 @@ export default function Prep() {
             navigate('/play?mode=user')}}>Start Game</button>
 		<button >Rotate Your Ships</button>
 		<button onClick={() => navigate('/play?mode=user')} >Random Placement</button>
-		</>
+		<button onClick={() => dispatch(resetBoard())}> reset </button>
+        </>
 	);
 }
