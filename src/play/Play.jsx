@@ -17,7 +17,7 @@ export default function Play(props) {
 	return (
 		<div>
 
-			<button onClick={() => dispatch(resetBoard())}> reset </button>
+			<button onClick={() => dispatch(resetBoard())}> Reset </button>
 			<div class="playPageContainer">
 				<div class="boardContainer">
 					<div class>Component's board:</div>
