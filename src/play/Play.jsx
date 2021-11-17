@@ -7,7 +7,7 @@ import ComputerBoard from '../ComputerBoard';
 import { useSelector, useDispatch } from 'react-redux';
 import { getRandomInt } from '../helpers/helperFunction';
 import "./Play.css"
-import { Button, Nav, Container, Card, Row, Col, Image } from 'react-bootstrap';
+import { Button, ListGroup, Container, Card, Row, Col, Image } from 'react-bootstrap';
 
 
 export default function Play(props) {
@@ -20,7 +20,7 @@ export default function Play(props) {
 		<div>
 			<div class="playPageContainer">
 				<div class="boardContainer-left">
-					<div class>Component's board:</div>
+					<div >Component's board:</div>
 						<UserBoard mode={mode} />
 				</div>
 
@@ -29,18 +29,32 @@ export default function Play(props) {
 					{mode === 'user' ? <ComputerBoard />: ''}
 				</div>
 			</div>
+			<div class="playPageContainer">
+				<div class="buttom-left">
+					<Button variant="outline-secondary" onClick={() => dispatch(fire(mode, getRandomInt(10), getRandomInt(10)))}> Random Fire </Button>
+				</div>
+
+				<div class="buttom-right">
+					<Button variant="outline-secondary" onClick={() => dispatch(resetBoard())}> Reset </Button>
+				</div>
+			</div>
 			
-			{' '}
-			<Button variant="outline-secondary" onClick={() => dispatch(fire(mode, getRandomInt(10), getRandomInt(10)))}> Random Fire </Button>{' '}
-			<Button variant="outline-secondary" onClick={() => dispatch(resetBoard())}> Reset </Button>
-			<div class="statusDisplay">
-				
-				{mode === 'user' ? (
+			<Card className="text-center">
+        <Card.Body>         
+          <Card.Text>
+            <ListGroup>
+              <ListGroup.Item>{mode === 'user' ? (
 					<div>Your percent boat Left: {(gameState.computerBoats.size * 100 / 17).toFixed(2)} %</div>
 				) : (
 					''
-				)}
-			</div>
+				)}</ListGroup.Item>
+              
+            </ListGroup>
+          </Card.Text>
+        </Card.Body>
+      </Card>
+
+			
 		</div>
 	);
 }

@@ -57,10 +57,26 @@
     padding: 10px;
     flex: 50%;
   }
+  .buttom-left {
+    background-color: #e0eaec;
+    padding: 10px;
+    flex: 50%;
+  }
+  
+  .buttom-right {
+    background-color: #e0eaec;
+    padding: 10px;
+    flex: 50%;
+  }
   
   /* Responsive layout - makes a one column-layout instead of a two-column layout */
   @media (max-width: 800px) {
     .boardContainer-left, .boardContainer-right {
+      flex: 100%;
+    }
+  }
+  @media (max-width: 800px) {
+    .buttom-left, .buttom-right {
       flex: 100%;
     }
   }

@@ -22,7 +22,7 @@ export default function Prep() {
             <div class = "boardContainer-left">Place ships on your board:<Board/></div>
             
             
-            <div class = "boardContainer-right">Your boats
+            <div class = "boardContainer-right">Your Remain Boats
             <div class = "shipBoard"> 
                 <Ship len = "2"/>
                 <Ship len = "3"/>
@@ -39,9 +39,9 @@ export default function Prep() {
             } else{
                 alert("your placement is invalid! going to random placement for now");
             }
-            navigate('/play?mode=user')}}>Start Game</Button>
-		<Button variant="outline-secondary" >Rotate Your Ships</Button>
-		<Button variant="outline-secondary" onClick={() => navigate('/play?mode=user')} >Random Placement</Button>
+            navigate('/play?mode=user')}}>Start Game</Button>{' '}
+		<Button variant="outline-secondary" >Rotate Your Ships</Button>{' '}
+		<Button variant="outline-secondary" onClick={() => navigate('/play?mode=user')} >Random Placement</Button>{' '}
 		<Button variant="outline-secondary" onClick={() => dispatch(resetBoard())}> reset </Button>
         </>
 	);

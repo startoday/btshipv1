@@ -2,10 +2,9 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { localStorageKey } from './helpers/constants'
 import "./App.css";
-
 import Navigation from './Navigation';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Nav, Container, Card, Row, Col, Image } from 'react-bootstrap';
+import { Button, Nav, Container, Card, Row, Col, Image, ListGroup } from 'react-bootstrap';
 import Img from './battleShip.png'
 
 
@@ -17,18 +16,15 @@ function App() {
   return (
     <>
       <div>
-      <Card className="text-left">
-        <Card.Body>
-          <Card.Title>Welcome to BattleShip!</Card.Title>
-          <Container>
-            <Row className="justify-content-md-center">
-              <Col xs={12} sm={4} md={4}>
-                <Image width={250} src = {Img} rounded />
-              </Col>
-            </Row>
-          </Container>
+      <Card className="text-center">
+        <Card.Body>         
           <Card.Text>
-            Click the navBar to go to anywhere ;)
+            <ListGroup>
+              <ListGroup.Item>Welcome to BattleShip!</ListGroup.Item>
+              <ListGroup.Item><Image width={500} src = {Img} rounded /></ListGroup.Item>
+              <ListGroup.Item>Click the navBar to go to anywhere ;)</ListGroup.Item>
+              
+            </ListGroup>
           </Card.Text>
         </Card.Body>
       </Card>
