@@ -1,0 +1,7 @@
+.result{
+    display:grid;
+    justify-content: center;
+    align-content: center;
+    font-size: xx-large;
+    color:deeppink;
+}

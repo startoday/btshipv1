@@ -42,20 +42,25 @@
 .playPageContainer {
     display: flex;
     flex-wrap: wrap;
-    font-size: 30px;
     text-align: center;
+    align-content: center;
+    justify-content: center;
   }
   
   .boardContainer-left {
     background-color: #f1f1f1;
     padding: 10px;
     flex: 50%;
+    align-content: center;
+    justify-content: center;
   }
   
   .boardContainer-right {
     background-color: #d0e8eb;
     padding: 10px;
     flex: 50%;
+    align-content: center;
+    justify-content: center;
   }
   .buttom-left {
     background-color: #e0eaec;
