@@ -1,9 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { localStorageKey, stateMode } from './helpers/constants'
+import "./App.css";
 import Navigation from './Navigation';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Buttom, Nav, Container } from 'react-bootstrap';
+import { Button, Nav, Container, Card, Row, Col, Image, ListGroup } from 'react-bootstrap';
+import Img from './battleShip.png'
 
 
 
@@ -23,10 +25,26 @@ function App() {
   // }
   return (
     <>
-      <div>Welcome to BattleShip!</div>
-      <button onClick={() => navigate('/preparation')}>play with AI</button>{' '}
-      <button onClick={() => navigate('/play?mode=single')}>free Play</button>{' '}
-      <button onClick={() => navigate('/rule')}>Game Rule</button>{' '}
+      <div>
+      <Card className="text-center">
+        <Card.Body>         
+          <Card.Text>
+            <ListGroup>
+              <ListGroup.Item>Welcome to BattleShip!</ListGroup.Item>
+              <ListGroup.Item><Image width={500} src = {Img} rounded /></ListGroup.Item>
+              <ListGroup.Item>Click the navBar to go to anywhere ;)</ListGroup.Item>
+              
+            </ListGroup>
+          </Card.Text>
+        </Card.Body>
+      </Card>
+      
+
+      {/* <Button variant="outline-secondary" onClick={() => navigate('/preparation')}>play with AI</Button>{' '}
+      <Button variant="outline-secondary" onClick={() => navigate('/play?mode=single')}>free Play</Button>{' '}
+      <Button variant="outline-secondary" onClick={() => navigate('/rule')}>Game Rule</Button>{' '} 
+       */}
+      </div>
     </>
   );
 }

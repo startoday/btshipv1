@@ -8,6 +8,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getRandomInt } from '../helpers/helperFunction';
 import "./Play.css"
 import { localStorageKey,stateMode } from '../helpers/constants'
+import { Button, ListGroup, Container, Card, Row, Col, Image } from 'react-bootstrap';
+
 
 export default function Play(props) {
 	const queryString = window.location.search;
@@ -27,27 +29,51 @@ export default function Play(props) {
 
 	return (
 		<div>
-
-			<button onClick={() => dispatch(resetBoard())}> Reset </button>
 			<div class="playPageContainer">
-				<div class="boardContainer">
-					<div class>Component's board:</div>
+				<div class="boardContainer-left">
+					<div >Component's board:</div>
 						<UserBoard mode={mode} />
 				</div>
 
-				<div class="boardContainer">
+				<div class="boardContainer-right">
 					{mode === 'user' ? <div>Your board:</div> : ''}
-					{mode === 'user' ? <ComputerBoard /> : ''}
+					{mode === 'user' ? <ComputerBoard />: ''}
 				</div>
 			</div>
-			<div class="statusDisplay">
+			{/* <div class="statusDisplay">
 				<button onClick={() => dispatch(fire(mode, -1, -1))}> randomfire </button>
 				{mode === 'user' ? (
 					<div>Your percent boat Left: {(gameState.computerBoats.length * 100 / 17).toFixed(2)} %</div>
 				) : (
 					''
 				)}
-			</div> 
+			</div>  */}
+			<div class="playPageContainer">
+				<div class="buttom-left">
+					<Button variant="outline-secondary" onClick={() => dispatch(fire(mode, -1, -1))}> Random Fire </Button>
+				</div>
+
+				<div class="buttom-right">
+					<Button variant="outline-secondary" onClick={() => dispatch(resetBoard())}> Reset </Button>
+				</div>
+			</div>
+			
+			<Card className="text-center">
+        <Card.Body>         
+          <Card.Text>
+            <ListGroup>
+              <ListGroup.Item>{mode === 'user' ? (
+					<div>Your percent boat Left: {(gameState.computerBoats.length * 100 / 17).toFixed(2)} %</div>
+				) : (
+					''
+				)}</ListGroup.Item>
+              
+            </ListGroup>
+          </Card.Text>
+        </Card.Body>
+      </Card>
+
+			
 		</div>
 	);
 }
