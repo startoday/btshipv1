@@ -11,6 +11,7 @@
     display: grid;
 	grid-template-columns: repeat(5, 30px);
 	grid-template-rows: repeat(5, 30px);
+  
 }
 
 #shipColor {
@@ -35,10 +36,22 @@
     padding: 10px;
     flex: 50%;
   }
+
+  .boardContainer-middle {
+    background-color: #f1f1f1;
+    padding-left: 500px;
+    flex: 100%;
+    
+  }
   
   /* Responsive layout - makes a one column-layout instead of a two-column layout */
   @media (max-width: 800px) {
     .boardContainer-left, .boardContainer-right {
+      flex: 100%;
+    }
+    .boardContainer-middle {
+      background-color: #f1f1f1;
+      padding: 50px;
       flex: 100%;
     }
   }

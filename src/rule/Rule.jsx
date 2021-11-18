@@ -22,13 +22,6 @@ export default function Rule() {
                 </Card.Text>
             </Card.Body>
         </Card>
-        <div>
-            <h1></h1>
-            <p></p>
-            <h1></h1>
-            <p>
-            </p>
-            <p></p>
-        </div></>
+        </>
     )
 }

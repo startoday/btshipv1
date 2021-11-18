@@ -23,16 +23,18 @@ export default function Prep() {
             
             
             <div class = "boardContainer-right">Your Remain Boats
-            <div class = "shipBoard"> 
-                <Ship len = "2"/>
-                <Ship len = "3"/>
-                <Ship len = "3"/>
-                <Ship len = "4"/>
-                <Ship len = "5"/>
-            </div>
+                <div class = "shipBoard"> 
+                    <Ship len = "2"/>
+                    <Ship len = "3"/>
+                    <Ship len = "3"/>
+                    <Ship len = "4"/>
+                    <Ship len = "5"/>
+                </div>
+           
             </div>
         </div>
         <br/>
+        <div class = "boardContainer-middle">
 		<Button variant="outline-secondary" onClick={() => {
             if (valid){
                 dispatch(setBoard({takenPlace:[...takenPlace]}));
@@ -43,6 +45,7 @@ export default function Prep() {
 		<Button variant="outline-secondary" >Rotate Your Ships</Button>{' '}
 		<Button variant="outline-secondary" onClick={() => navigate('/play?mode=user')} >Random Placement</Button>{' '}
 		<Button variant="outline-secondary" onClick={() => dispatch(resetBoard())}> reset </Button>
+        </div>
         </>
 	);
 }
