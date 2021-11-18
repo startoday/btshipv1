@@ -10,7 +10,7 @@
     margin: 15px 15px;
     display: grid;
 	grid-template-columns: repeat(5, 30px);
-	grid-template-rows: repeat(5, 20px);
+	grid-template-rows: repeat(5, 30px);
 }
 
 #shipColor {
