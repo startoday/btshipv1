@@ -1,4 +1,6 @@
 import { getRandomInt } from '../helpers/helperFunction';
+import { localStorageKey } from '../helpers/constants'
+
 
 const rowLength = 10;
 const ships = [ 2, 3, 3, 4, 5 ];
@@ -42,7 +44,7 @@ function generateBoats() {
 		boat.forEach((b) => takenPlace.add(b));
 	});
 
-	return takenPlace;
+	return [...takenPlace];
 }
 
 function generateDefaultGameSate(rowLength, userBoats= generateBoats()) {
@@ -79,6 +81,13 @@ function computerMove(board) {
 }
 
 const gameState = (game = defaultGameState, action) => {
+	const val = localStorage.getItem(localStorageKey);
+	if(val!==null && val!==undefined){
+		game=  JSON.parse(localStorage.getItem(localStorageKey));
+		console.log("in side game state is ", gameState);
+		console.log("in sb ots state is ", game.userBoats);
+		console.log("in sb osads state is ", game.computerBoats);
+	} 
 	switch (action.type) {
 		case 'fire':
 			// TODO, if it is random frie, we may choose not to fire the same place,
@@ -87,9 +96,12 @@ const gameState = (game = defaultGameState, action) => {
 				alert("You can't refire a place already been fired, please choose a different place");
 				return game;
 			}
-			game.userBoats.delete(action.i * 10 + action.j);
+			//game.userBoats.delete(action.i * 10 + action.j);
+			game.userBoats = game.userBoats.filter(item=>
+				item !== action.i * 10 + action.j
+			)
 			game.board1[action.i][action.j] = game.board1[action.i][action.j] - 1;
-			if (game.userBoats.size === 0) {
+			if (game.userBoats.length === 0) {
 				alert('Game End!');
 				window.location.href = '/result?winner=user';
 			}
@@ -97,19 +109,28 @@ const gameState = (game = defaultGameState, action) => {
 				// TODO: improve computer move with better choice,
 				// such as when a hit comes, only hit around!
 				const { i, j } = computerMove(game.board2);
-				game.computerBoats.delete(i * 10 + j);
+				//game.computerBoats.delete(i * 10 + j);
+				game.computerBoats = game.computerBoats.filter(item=>
+					item !== i * 10 + j
+				)
 				game.board2[i][j] = game.board2[i][j] - 1;
-				if (game.computerBoats.size === 0) {
+				if (game.computerBoats.length === 0) {
 					alert('Game End!');
 					window.location.href = '/result?winner=pc';
 				}
 			}
+			localStorage.setItem(localStorageKey, JSON.stringify(game));
 			return { ...game };
 		case 'resetBoard':
-			return generateDefaultGameSate(rowLength);
+			const  res = generateDefaultGameSate(rowLength)
+			localStorage.setItem(localStorageKey, JSON.stringify(res));
+			return res;
 		case 'setBoard':
-				return generateDefaultGameSate(rowLength, action.taken["takenPlace"]);
+			const  res2 =generateDefaultGameSate(rowLength, action.taken["takenPlace"]);
+			localStorage.setItem(localStorageKey, JSON.stringify(res2));
+				return res2;
 		default:
+			localStorage.setItem(localStorageKey, JSON.stringify(game));
 			return game;
 	}
 };

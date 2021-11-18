@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { localStorageKey } from './helpers/constants'
+import { localStorageKey, stateMode } from './helpers/constants'
 import Navigation from './Navigation';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Buttom, Nav, Container } from 'react-bootstrap';
@@ -8,9 +8,20 @@ import { Buttom, Nav, Container } from 'react-bootstrap';
 
 
 
+
 function App() {
   const navigate = useNavigate();
   const value = localStorage.getItem(localStorageKey);
+  console.log("value is ", value);
+  if(value !== null && value !== undefined){
+    const mode = localStorage.getItem(stateMode);
+    alert("you have a previous state of game, will route to it");
+    //const site = '/play?mode='+mode+'&&prevData=true';
+    const site = '/play?mode='+mode;
+    console.log("site", site);
+    //navigate("/play?mode=user");
+    window.location.href = '/play?mode=user';
+  }
   return (
     <>
       <div>Welcome to BattleShip!</div>

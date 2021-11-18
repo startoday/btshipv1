@@ -2,11 +2,18 @@ import React from 'react';
 import { fire } from './actions';
 import Square from './Square';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { localStorageKey,stateMode } from './helpers/constants'
 export default function UserBoard(props) {
     const mode = props.mode;
     const dispatch = useDispatch();
-	const gameState = useSelector((state) => state.gameState);
+	let gameState = useSelector((state) => state.gameState);
+	const val = localStorage.getItem(localStorageKey);
+	if(val!==null && val!==undefined){
+
+		gameState=  JSON.parse(localStorage.getItem(localStorageKey));
+		console.log("at here game state is ", gameState);
+	} 
+	//const gameState = useSelector((state) => state.gameState);
 	const boardState = gameState.board1;
 	const boardComp = [];
 	for (let i = 0; i < boardState.length; i++) {
