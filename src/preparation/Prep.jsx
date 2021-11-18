@@ -33,6 +33,7 @@ export default function Prep() {
             </div>
         </div>
         <br/>
+        <div class = "boardContainer-middle">
 		<Button variant="outline-secondary" onClick={() => {
             if (valid){
                 dispatch(setBoard({takenPlace:[...takenPlace]}));
@@ -43,6 +44,7 @@ export default function Prep() {
 		<Button variant="outline-secondary" >Rotate Your Ships</Button>{' '}
 		<Button variant="outline-secondary" onClick={() => navigate('/play?mode=user')} >Random Placement</Button>{' '}
 		<Button variant="outline-secondary" onClick={() => dispatch(resetBoard())}> reset </Button>
+        </div>
         </>
 	);
 }

@@ -16,8 +16,9 @@ function App() {
   let containsUnfinished = false;
   //maybe not to rerender stuff at home page.
   if(value !== null && value !== undefined){
-    const mode = localStorage.getItem(stateMode);
+    const mode = JSON.parse(localStorage.getItem(stateMode));
     containsUnfinished = true;
+    console.log("mode is", mode);
     //const site = '/play?mode='+mode+'&&prevData=true';
     site = '/play?mode='+mode;
     //window.location.href =  site;

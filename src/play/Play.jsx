@@ -49,11 +49,9 @@ export default function Play(props) {
 				)}
 			</div>  */}
 			<div class="playPageContainer">
-				<div class="buttom-left">
+				<div class="buttom-middle">
 					<Button variant="outline-secondary" onClick={() => dispatch(fire(mode, -1, -1))}> Random Fire </Button>
-				</div>
-
-				<div class="buttom-right">
+				
 					<Button variant="outline-secondary" onClick={() => dispatch(resetBoard())}> Reset </Button>
 				</div>
 			</div>
