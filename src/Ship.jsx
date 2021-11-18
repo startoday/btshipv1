@@ -12,7 +12,7 @@ export default function Ship(prop) {
 			);
 	}
     return (
-        <div draggable="true" >
+        <div class = "shipContainer" draggable="true" >
             {arr}
         </div>
     )

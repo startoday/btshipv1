@@ -22,7 +22,7 @@ export default function Prep() {
             <div class = "boardContainer-left">Place ships on your board:<Board/></div>
             
             
-            <div class = "boardContainer-right">Your Remain Boats
+            <div class = "boardContainer-right">Your Remain Boats to set
             <div class = "shipBoard"> 
                 <Ship len = "2"/>
                 <Ship len = "3"/>
