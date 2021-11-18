@@ -50,7 +50,6 @@ function generateBoats() {
 function generateDefaultGameSate(rowLength, userBoats= generateBoats()) {
 	const board1 = generateBoard(rowLength);
 	const board2 = generateBoard(rowLength);
-	console.log("in generate default game state, userboat is ", userBoats)
 	userBoats.forEach((v) => {
 		board1[Math.floor(v / rowLength)][v % rowLength] = 2;
 	});
@@ -78,7 +77,6 @@ function findAValidMove(board) {
 		i = getRandomInt(10);
 		j = getRandomInt(10);
 	}
-	console.log("find a valid move", i, j);
 	return { i, j };
 }
 
@@ -86,7 +84,7 @@ const gameState = (game = defaultGameState, action) => {
 	const val = localStorage.getItem(localStorageKey);
 	if(val!==null && val!==undefined){
 		game=  JSON.parse(localStorage.getItem(localStorageKey));
-		console.log("in side game state is ", game);
+		//console.log("in side game state is ", game);
 	} 
 	switch (action.type) {
 		case 'fire':
@@ -95,7 +93,6 @@ const gameState = (game = defaultGameState, action) => {
 				const {i,  j} = findAValidMove(game.board1);
 				action.i = i;
 				action.j = j;
-				console.log("action i, j is",i, j, action.i, action.j);
 			}
 			else if (!validateFire(game.board1, action.i, action.j)) {
 				alert("You can't refire a place already been fired, please choose a different place");
