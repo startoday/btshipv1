@@ -50,6 +50,7 @@ function generateBoats() {
 function generateDefaultGameSate(rowLength, userBoats= generateBoats()) {
 	const board1 = generateBoard(rowLength);
 	const board2 = generateBoard(rowLength);
+	console.log("in generate default game state, userboat is ", userBoats)
 	userBoats.forEach((v) => {
 		board1[Math.floor(v / rowLength)][v % rowLength] = 2;
 	});
@@ -70,13 +71,14 @@ function validateFire(board, i, j) {
 	return board[i][j] === 0 || board[i][j] === 2;
 }
 
-function computerMove(board) {
+function findAValidMove(board) {
 	let i = getRandomInt(10);
 	let j = getRandomInt(10);
 	while (!validateFire(board, i, j)) {
 		i = getRandomInt(10);
 		j = getRandomInt(10);
 	}
+	console.log("find a valid move", i, j);
 	return { i, j };
 }
 
@@ -84,15 +86,18 @@ const gameState = (game = defaultGameState, action) => {
 	const val = localStorage.getItem(localStorageKey);
 	if(val!==null && val!==undefined){
 		game=  JSON.parse(localStorage.getItem(localStorageKey));
-		console.log("in side game state is ", gameState);
-		console.log("in sb ots state is ", game.userBoats);
-		console.log("in sb osads state is ", game.computerBoats);
+		console.log("in side game state is ", game);
 	} 
 	switch (action.type) {
 		case 'fire':
-			// TODO, if it is random frie, we may choose not to fire the same place,
-			// aka only don't return until it is a valid move
-			if (!validateFire(game.board1, action.i, action.j)) {
+			// indicating a random fire, we want it to be always valid
+			if( action.i === -1) {
+				const {i,  j} = findAValidMove(game.board1);
+				action.i = i;
+				action.j = j;
+				console.log("action i, j is",i, j, action.i, action.j);
+			}
+			else if (!validateFire(game.board1, action.i, action.j)) {
 				alert("You can't refire a place already been fired, please choose a different place");
 				return game;
 			}
@@ -108,7 +113,7 @@ const gameState = (game = defaultGameState, action) => {
 			if (action.player === 'user') {
 				// TODO: improve computer move with better choice,
 				// such as when a hit comes, only hit around!
-				const { i, j } = computerMove(game.board2);
+				const { i, j } = findAValidMove(game.board2);
 				//game.computerBoats.delete(i * 10 + j);
 				game.computerBoats = game.computerBoats.filter(item=>
 					item !== i * 10 + j
@@ -126,11 +131,13 @@ const gameState = (game = defaultGameState, action) => {
 			localStorage.setItem(localStorageKey, JSON.stringify(res));
 			return res;
 		case 'setBoard':
+			console.log("set board takenplace is ", action.taken["takenPlace"])
 			const  res2 =generateDefaultGameSate(rowLength, action.taken["takenPlace"]);
+			
 			localStorage.setItem(localStorageKey, JSON.stringify(res2));
 				return res2;
 		default:
-			localStorage.setItem(localStorageKey, JSON.stringify(game));
+			//localStorage.setItem(localStorageKey, JSON.stringify(game));
 			return game;
 	}
 };

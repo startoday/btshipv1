@@ -13,15 +13,14 @@ function App() {
   const navigate = useNavigate();
   const value = localStorage.getItem(localStorageKey);
   console.log("value is ", value);
-  if(value !== null && value !== undefined){
-    const mode = localStorage.getItem(stateMode);
-    alert("you have a previous state of game, will route to it");
-    //const site = '/play?mode='+mode+'&&prevData=true';
-    const site = '/play?mode='+mode;
-    console.log("site", site);
-    //navigate("/play?mode=user");
-    window.location.href = '/play?mode=user';
-  }
+  //maybe not to rerender stuff at home page.
+  // if(value !== null && value !== undefined){
+  //   const mode = localStorage.getItem(stateMode);
+  //   alert("you have a previous state of game, will route to it");
+  //   //const site = '/play?mode='+mode+'&&prevData=true';
+  //   const site = '/play?mode='+mode;
+  //   window.location.href =  site;
+  // }
   return (
     <>
       <div>Welcome to BattleShip!</div>

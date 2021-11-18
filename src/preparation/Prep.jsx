@@ -8,7 +8,7 @@ import './Prep.css';
 export default function Prep() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    let valid = false;
+    let valid = true;
     const takenPlace = new Set();
     const ship1 = [0,1];
     ship1.forEach((b) => takenPlace.add(b));
@@ -29,7 +29,7 @@ export default function Prep() {
         <br/>
 		<button  onClick={() => {
             if (valid){
-                dispatch(setBoard({takenPlace}));
+                dispatch(setBoard({takenPlace:[...takenPlace]}));
             } else{
                 alert("your placement is invalid! going to random placement for now");
             }

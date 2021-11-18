@@ -15,8 +15,7 @@ export default function Play(props) {
 	const mode = urlParams.get('mode');
 	// const hasPreData = urlParams.get('prevData');
 	localStorage.setItem(stateMode, JSON.stringify(mode));
-	//console.log("mde is m has prev ", mode, hasPreData);
-	let gameState =useSelector((state) => state.gameState);
+	//let gameState =useSelector((state) => state.gameState);
 	// const val = localStorage.getItem(localStorageKey);
 	// if(val!==null){
 	// 	console.log("youhave soem thing");
@@ -24,8 +23,8 @@ export default function Play(props) {
 	// 	console.log("at here game state is ", gameState);
 	// } 
 	const dispatch = useDispatch();
-	// //const gameState = useSelector((state) => state.gameState);
-	// console.log("game state is ", gameState);
+	const gameState = useSelector((state) => state.gameState);
+
 	return (
 		<div>
 
@@ -42,9 +41,9 @@ export default function Play(props) {
 				</div>
 			</div>
 			<div class="statusDisplay">
-				<button onClick={() => dispatch(fire(mode, getRandomInt(10), getRandomInt(10)))}> randomfire </button>
+				<button onClick={() => dispatch(fire(mode, -1, -1))}> randomfire </button>
 				{mode === 'user' ? (
-					<div>Your percent boat Left: {(gameState.computerBoats.size * 100 / 17).toFixed(2)} %</div>
+					<div>Your percent boat Left: {(gameState.computerBoats.length * 100 / 17).toFixed(2)} %</div>
 				) : (
 					''
 				)}
