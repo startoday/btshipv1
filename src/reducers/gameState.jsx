@@ -47,13 +47,14 @@ function generateBoats() {
 	return [...takenPlace];
 }
 
-function generateDefaultGameSate(rowLength, userBoats= generateBoats()) {
+function generateDefaultGameSate(rowLength, computerBoats= generateBoats()) {
 	const board1 = generateBoard(rowLength);
 	const board2 = generateBoard(rowLength);
+	const userBoats = generateBoats();
 	userBoats.forEach((v) => {
 		board1[Math.floor(v / rowLength)][v % rowLength] = 2;
 	});
-	const computerBoats = generateBoats();
+	// const computerBoats = generateBoats();
 	computerBoats.forEach((v) => {
 		board2[Math.floor(v / rowLength)][v % rowLength] = 2;
 	});
@@ -125,7 +126,8 @@ const gameState = (game = defaultGameState, action) => {
 			return { ...game };
 		case 'resetBoard':
 			const  res = generateDefaultGameSate(rowLength)
-			localStorage.setItem(localStorageKey, JSON.stringify(res));
+			//localStorage.setItem(localStorageKey, JSON.stringify(res));
+			localStorage.removeItem(localStorageKey);
 			return res;
 		case 'setBoard':
 			console.log("set board takenplace is ", action.taken["takenPlace"])

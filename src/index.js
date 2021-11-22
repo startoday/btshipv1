@@ -12,7 +12,6 @@ import Rule from './rule/Rule';
 import App from './App';
 import CustNav from './CustNav';
 import Result from './result/Result';
-import { Navbar, Nav, Container } from 'react-bootstrap';
 
 const store = createStore(allReducers);
 ReactDOM.render(
@@ -21,21 +20,6 @@ ReactDOM.render(
     
     <Router >
     <CustNav/>
-    <Navbar bg="light" expand="lg">
-            <Container>
-                <Navbar.Brand href="/">BattleShip</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav>
-                        <Nav.Link href='/'>Home</Nav.Link>
-                        <Nav.Link href='/preparation'>Play with AI</Nav.Link>
-                        <Nav.Link href='/play?mode=single'>Free Play</Nav.Link>
-                        <Nav.Link href='/rule'>Game Rule</Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
-
       <Routes>
         <Route exact path="/" element={<App />} />
         <Route exact path="/preparation" element={<Prep />} />

@@ -15,6 +15,7 @@ export default function CustNav() {
                     <Nav>
                         <Nav.Link href='/'>Home</Nav.Link>
                         <Nav.Link href='/preparation'>Play with AI</Nav.Link>
+                        {/* <Nav.Link href='/play?mode=user'>Play with AI</Nav.Link> */}
                         <Nav.Link href='/play?mode=single'>Free Play</Nav.Link>
                         <Nav.Link href='/rule'>Game Rule</Nav.Link>
                     </Nav>

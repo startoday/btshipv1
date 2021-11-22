@@ -11,13 +11,12 @@
 	display: grid;
   /* grid-auto-columns: auto;
   grid-auto-rows: auto; */
-	grid-template-columns: repeat(5, 30px);  
-	grid-template-rows: repeat(5, 30px);
+	grid-template-columns: repeat(5, 35px);  
+	grid-template-rows: repeat(5, 35px);
 	align-content: center;
 	justify-content: center;
 }
 .shipContainer {
-
 }
 
 /* .hor {

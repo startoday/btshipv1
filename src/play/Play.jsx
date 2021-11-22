@@ -19,9 +19,16 @@ export default function Play(props) {
 	const urlParams = new URLSearchParams(queryString);
 	const mode = urlParams.get('mode');
 	const navigate = useNavigate();
+	const stored = localStorage.getItem(stateMode)
+	// console.log("sm is ", stored);
+	// if(stored === undefined || stored ===null ){
+	// 	window.location.href = '/preparation';
+	// }
+	const storedMode = JSON.parse(stored);
+
 	let site = "/"
 	let confilctGameType = false;
-	const storedMode = JSON.parse(localStorage.getItem(stateMode));
+	
 	console.log("m,sm ", mode, storedMode);
 	if(storedMode !== undefined && storedMode !==null && storedMode!== mode) {
 		confilctGameType = true;
@@ -46,13 +53,21 @@ export default function Play(props) {
 		
 		<div>
 
+
 {confilctGameType && <Popup
         content={<>
-          <b>game type confilct!</b>
-          <p>You have unfinished game state, click button to re-enter or click close to ignore.</p>
-          <button class = "goprev" onClick={() => navigate(site)}>Go to previous game</button>
-        </>} handleClose={
-          () => dispatch(closeLocalHint())
+          <b>detect changing mode type!!</b>
+          <p>Due to switch to a different mode of game, your previous game state will be cleared.</p>
+          {/* <button class = "goprev" onClick={() => {
+
+			  navigate(site)
+		}}>Go to previous game</button> */}
+        </>
+		
+	} handleClose={
+          () => {dispatch(closeLocalHint());
+			dispatch(resetBoard());
+		}
         }
       />}
 			<div class="playPageContainer">

@@ -10,6 +10,8 @@ import {useEffect} from "react";
 import { isOutOfboundary } from '../helpers/helperFunction';
 import {  shipShape } from '../helpers/constants';
 import Popup from "../Popup"
+import { localStorageKey,stateMode } from '../helpers/constants'
+
 const dirMap= {
     "hor":1,
     "ver" :10,
@@ -134,7 +136,7 @@ function drop(e) {
 	return (
 		<>
         <div class = "prepareBoard drop-targets">
-            <div class = "boardContainer-left">Place ships on your board:<Board/></div>
+            <div class = "boardContainer-left">Drag ships on this board:<Board/></div>
             
             <div class = "boardContainer-right">Your Remain Boats to set
             <div class = "shipBoard"> 
@@ -151,6 +153,10 @@ function drop(e) {
 		<Button variant="outline-secondary" onClick={() => {
             if (finishedShip===5){
                 dispatch(setBoard({takenPlace:[...takenPlace]}));
+         
+                localStorage.removeItem(localStorageKey);
+                localStorage.removeItem(stateMode);
+                
                 navigate('/play?mode=user');
             } else{
                 alert("your placement is invalid! Finish undone ship or try random placement");
@@ -161,8 +167,17 @@ function drop(e) {
             }}>Start Game</Button>{' '}
 		<Button variant="outline-secondary" onClick={() => {
           alert('Sorry we only have veritical ships for placement for now');
-            }}>Rotate Your Ships</Button>{' '}
-		<Button variant="outline-secondary" onClick={() => navigate('/play?mode=user')} >Random Placement</Button>{' '}
+            }}>Rotate Ships</Button>{' '}
+		<Button variant="outline-secondary" onClick={() => 
+            {
+                localStorage.removeItem(localStorageKey);
+                localStorage.removeItem(stateMode);
+                dispatch(resetBoard());
+            navigate('/play?mode=user');
+
+        }
+            
+            } >Random placement to start</Button>{' '}
 		<Button variant="outline-secondary" onClick={() => window.location.reload()}> reset </Button>
         </div>
         </>

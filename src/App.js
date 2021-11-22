@@ -39,7 +39,7 @@ function App() {
       {containsUnfinished && <Popup
         content={<>
           <b>Detected unfinished game!</b>
-          <p>You have unfinished game state, click button to re-enter or click close to ignore.</p>
+          <p>You have unfinished game state, click button to re-enter or click close to ignore(will clear the old game).</p>
           <button class = "goprev" onClick={() => navigate(site)}>Go to previous game</button>
         </>} handleClose={
           //cleanStorage
