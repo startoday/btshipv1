@@ -24,11 +24,15 @@ export default function Prep() {
             
             <div class = "boardContainer-right">Your Remain Boats to set
             <div class = "shipBoard"> 
-                <Ship len = "2"/>
-                <Ship len = "3"/>
+                <Ship shipId = "s1"/>
+                <Ship shipId = "s2"/>
+                <Ship shipId = "s3"/>
+                <Ship shipId = "s4"/>
+                <Ship shipId = "s5"/>
+                {/* <Ship len = "3"/>
                 <Ship len = "3"/>
                 <Ship len = "4"/>
-                <Ship len = "5"/>
+                <Ship len = "5"/> */}
             </div>
             </div>
         </div>
