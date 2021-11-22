@@ -1,5 +1,6 @@
 import React from 'react';
-import{localStorageKey} from '../helpers/constants'
+import { localStorageKey, stateMode } from '../helpers/constants'
+
 import './Result.css';
 
 export default function Result() {
@@ -7,5 +8,6 @@ export default function Result() {
 	const urlParams = new URLSearchParams(queryString);
     const winner = urlParams.get('winner');
     localStorage.removeItem(localStorageKey);
+	localStorage.removeItem(stateMode);
 	return <div class ="result">Winner is {winner}!!!</div>;
 }

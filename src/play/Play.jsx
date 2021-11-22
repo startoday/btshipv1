@@ -9,12 +9,26 @@ import { getRandomInt } from '../helpers/helperFunction';
 import "./Play.css"
 import { localStorageKey,stateMode } from '../helpers/constants'
 import { Button, ListGroup, Container, Card, Row, Col, Image } from 'react-bootstrap';
+import Popup from "../Popup"
+import { closeLocalHint } from '../actions';
+import { useNavigate} from 'react-router-dom';
 
 
 export default function Play(props) {
 	const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);
 	const mode = urlParams.get('mode');
+	const navigate = useNavigate();
+	let site = "/"
+	let confilctGameType = false;
+	const storedMode = JSON.parse(localStorage.getItem(stateMode));
+	console.log("m,sm ", mode, storedMode);
+	if(storedMode !== undefined && storedMode !==null && storedMode!== mode) {
+		confilctGameType = true;
+		site = '/play?mode='+storedMode;
+		//trigger popped window
+	}
+
 	// const hasPreData = urlParams.get('prevData');
 	localStorage.setItem(stateMode, JSON.stringify(mode));
 	//let gameState =useSelector((state) => state.gameState);
@@ -26,9 +40,21 @@ export default function Play(props) {
 	// } 
 	const dispatch = useDispatch();
 	const gameState = useSelector((state) => state.gameState);
-
+	const isOpen = useSelector((state) => state.localStorageOpen);
 	return (
+
+		
 		<div>
+
+{confilctGameType && <Popup
+        content={<>
+          <b>game type confilct!</b>
+          <p>You have unfinished game state, click button to re-enter or click close to ignore.</p>
+          <button class = "goprev" onClick={() => navigate(site)}>Go to previous game</button>
+        </>} handleClose={
+          () => dispatch(closeLocalHint())
+        }
+      />}
 			<div class="playPageContainer">
 				<div class="boardContainer-left">
 					<div >Component's board:</div>
