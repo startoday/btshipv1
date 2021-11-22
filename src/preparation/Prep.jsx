@@ -137,17 +137,17 @@ function drop(e) {
 
 	return (
 		<>
-        <div class = "prepareBoard drop-targets">
+        <div class = "playPageContainer">
             <div class = "boardContainer-left">Drag ships on this board:<Board/></div>
             
             <div class = "boardContainer-right">Your Remain Boats to set
-            <div class = "shipBoard"> 
-                <Ship dir = {dir} shipId = "s1"/>
-                <Ship  dir = {dir} shipId = "s2"/>
-                <Ship  dir = {dir} shipId = "s3"/>
-                <Ship  dir = {dir} shipId = "s4"/>
-                <Ship  dir = {dir} shipId = "s5"/>
-            </div>
+                <div class = "shipBoard"> 
+                    <Ship dir = {dir} shipId = "s1"/>
+                    <Ship  dir = {dir} shipId = "s2"/>
+                    <Ship  dir = {dir} shipId = "s3"/>
+                    <Ship  dir = {dir} shipId = "s4"/>
+                    <Ship  dir = {dir} shipId = "s5"/>
+                </div>
             </div>
         </div>
         <br/>
@@ -179,7 +179,7 @@ function drop(e) {
 
         }
             } >Random placement to start</Button>{' '}
-		<Button variant="outline-secondary" onClick={() => window.location.reload()}> reset </Button>
+		<Button variant="outline-secondary" onClick={() => window.location.reload()}> Reset </Button>
         </div>
         </>
 	);

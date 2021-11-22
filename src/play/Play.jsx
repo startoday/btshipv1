@@ -56,7 +56,7 @@ export default function Play(props) {
 
 {confilctGameType && <Popup
         content={<>
-          <b>detect changing mode type!!</b>
+          <b>Detect changing mode type!</b>
           <p>Due to switch to a different mode of game, your previous game state will be cleared.</p>
           {/* <button class = "goprev" onClick={() => {
 

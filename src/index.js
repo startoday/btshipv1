@@ -5,7 +5,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Prep from './preparation/Prep';
 import Play from './play/Play';
 import Rule from './rule/Rule';
@@ -17,9 +17,9 @@ const store = createStore(allReducers);
 ReactDOM.render(
 
   <Provider store={store}>
-    
+
     <Router >
-    <CustNav/>
+      <CustNav />
       <Routes>
         <Route exact path="/" element={<App />} />
         <Route exact path="/preparation" element={<Prep />} />
