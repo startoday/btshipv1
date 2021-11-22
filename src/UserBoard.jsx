@@ -9,7 +9,6 @@ export default function UserBoard(props) {
 	let gameState = useSelector((state) => state.gameState);
 	const val = localStorage.getItem(localStorageKey);
 	if(val!==null && val!==undefined){
-
 		gameState=  JSON.parse(localStorage.getItem(localStorageKey));
 		console.log("at here game state is ", gameState);
 	} 

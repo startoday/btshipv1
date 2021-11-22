@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import { localStorageKey, stateMode } from './helpers/constants'
 import "./App.css";
 import Navigation from './Navigation';
@@ -7,9 +7,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Nav, Container, Card, Row, Col, Image, ListGroup } from 'react-bootstrap';
 import Img from './battleShip.png'
 import Popup from "./Popup"
+import { closeLocalHint } from './actions';
+import { useSelector, useDispatch } from 'react-redux';
 
 function App() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const value = localStorage.getItem(localStorageKey);
   console.log("value is ", value);
   let site = "/"
@@ -23,14 +26,14 @@ function App() {
     site = '/play?mode='+mode;
     //window.location.href =  site;
   }
+  const isOpen = useSelector((state) => state.localStorageOpen);
+  // const [stuff, setIsOpen] = useState(false);
 
-  const [isOpen, setIsOpen] = useState(false);
-
-  const cleanStorage = () => {
-    localStorage.removeItem(localStorageKey);
-    console.log("local storage cleaned")
-    setIsOpen(!isOpen);
-  }
+  // const cleanStorage = () => {
+  //   localStorage.removeItem(localStorageKey);
+  //   console.log("local storage cleaned")
+  //   setIsOpen(!stuff);
+  // }
   return (
     <>
       {containsUnfinished && <Popup
@@ -38,7 +41,10 @@ function App() {
           <b>Detected unfinished game!</b>
           <p>You have unfinished game state, click button to re-enter or click close to ignore.</p>
           <button class = "goprev" onClick={() => navigate(site)}>Go to previous game</button>
-        </>} handleClose={cleanStorage}
+        </>} handleClose={
+          //cleanStorage
+          () => dispatch(closeLocalHint())
+        }
       />}
       <div>
         <Card className="text-center">

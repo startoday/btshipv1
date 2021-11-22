@@ -7,8 +7,9 @@ export default function Board(props) {
     for (let i = 0; i < rowLength; i++) {
 		for (let j = 0; j < rowLength; j++) {
 			board.push(
-				<div >
-					<Square/> 
+				<div class="square" id ={i*10 +j }>
+				
+					{/* <Square/>  */}
 				</div>
 			);
 		}

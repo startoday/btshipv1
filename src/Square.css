@@ -9,7 +9,7 @@
 	border: 1px solid grey;
 	width: 30px;
 	height: 30px;
-    background-color: lightblue;
+    /* background-color: lightblue; */
 }
 
 #miss{
@@ -29,6 +29,6 @@
     background-color: grey;
 }
 
-#shipColor{
+/* .shipColor{
     color: darkgreen;
-}
+} */

@@ -6,57 +6,83 @@
     grid-template-rows: repeat(10, 20px);
 }
 */
-.shipBoard{
-    margin: 15px 15px;
-    display: grid;
-	grid-template-columns: repeat(5, 30px);
+.shipBoard {
+	margin: 15px 15px;
+	display: grid;
+  /* grid-auto-columns: auto;
+  grid-auto-rows: auto; */
+	grid-template-columns: repeat(5, 30px);  
 	grid-template-rows: repeat(5, 30px);
-  align-content: center;
-justify-content: center;
+	align-content: center;
+	justify-content: center;
 }
-.shipContainer{
+.shipContainer {
 
 }
 
+/* .hor {
+	 display: flex;  
+}
+.ver{
+  display: grid;
+	grid-template-columns: repeat(5, 30px);  
+	 grid-template-rows: repeat(5, 30px); 
+   margin: 1px 1px;
+  grid-auto-rows: auto;
+}  */
+.boardSquare {
+	border: 1px solid grey;
+	width: 30px;
+	height: 30px;
+	/* background-color: lightblue; */
+}
 
-#shipColor {
-    background-color: darkgreen;
+.shipColor {
+	background-color: darkgreen;
 }
 
 .prepareBoard {
-    display: flex;
-    flex-wrap: wrap;
-    font-size: 30px;
-    text-align: center;
-  }
-  
-  .boardContainer-left {
-    background-color: #f1f1f1;
-    padding: 10px;
-    flex: 50%;
-  }
-  
-  .boardContainer-right {
-    background-color: #d0e8eb;
-    padding: 10px;
-    flex: 50%;
-  }
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 30px;
+	text-align: center;
+}
 
-  .boardContainer-middle {
-    background-color: #f1f1f1;
-    padding-left: 500px;
-    flex: 100%;
-    
-  }
-  
-  /* Responsive layout - makes a one column-layout instead of a two-column layout */
-  @media (max-width: 800px) {
-    .boardContainer-left, .boardContainer-right {
-      flex: 100%;
-    }
-    .boardContainer-middle {
-      background-color: #f1f1f1;
-      padding: 50px;
-      flex: 100%;
-    }
-  }
+.boardContainer-left {
+	background-color: #f1f1f1;
+	padding: 10px;
+	flex: 50%;
+}
+
+.boardContainer-right {
+	background-color: #d0e8eb;
+	padding: 10px;
+	flex: 50%;
+}
+
+.boardContainer-middle {
+	background-color: #f1f1f1;
+	padding-left: 500px;
+	flex: 100%;
+}
+
+/* Responsive layout - makes a one column-layout instead of a two-column layout */
+@media (max-width: 800px) {
+	.boardContainer-left,
+	.boardContainer-right {
+		flex: 100%;
+	}
+	.boardContainer-middle {
+		background-color: #f1f1f1;
+		padding: 50px;
+		flex: 100%;
+	}
+}
+
+/* .hide {
+    display: none;
+} */
+
+.drag-over {
+	border: dashed 1px red;
+}
