@@ -93,6 +93,8 @@ function dragLeave(e) {
 }
 
 function drop(e) {
+    if(e.preventDefault) { e.preventDefault(); }
+    if(e.stopPropagation) { e.stopPropagation(); }
     e.target.classList.remove('drag-over');
     const start = parseInt(e.target.id);
     console.log("drop end",  e.target.id);
@@ -176,7 +178,6 @@ function drop(e) {
             navigate('/play?mode=user');
 
         }
-            
             } >Random placement to start</Button>{' '}
 		<Button variant="outline-secondary" onClick={() => window.location.reload()}> reset </Button>
         </div>
